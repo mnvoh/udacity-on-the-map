@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		117E76711E78734300F3E39B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E76701E78734300F3E39B /* AppDelegate.swift */; };
-		117E76731E78734300F3E39B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E76721E78734300F3E39B /* ViewController.swift */; };
+		117E76731E78734300F3E39B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117E76721E78734300F3E39B /* LoginViewController.swift */; };
 		117E76761E78734300F3E39B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117E76741E78734300F3E39B /* Main.storyboard */; };
 		117E76781E78734300F3E39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117E76771E78734300F3E39B /* Assets.xcassets */; };
 		117E767B1E78734300F3E39B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117E76791E78734300F3E39B /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		117E766D1E78734300F3E39B /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		117E76701E78734300F3E39B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		117E76721E78734300F3E39B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		117E76721E78734300F3E39B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		117E76751E78734300F3E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		117E76771E78734300F3E39B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		117E767A1E78734300F3E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +54,46 @@
 		117E766F1E78734300F3E39B /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				11FC09941E788319001AC03B /* Models */,
+				11FC09951E78831E001AC03B /* Views */,
+				11FC09931E78830D001AC03B /* Controllers */,
 				117E76701E78734300F3E39B /* AppDelegate.swift */,
-				117E76721E78734300F3E39B /* ViewController.swift */,
 				117E76741E78734300F3E39B /* Main.storyboard */,
-				117E76771E78734300F3E39B /* Assets.xcassets */,
 				117E76791E78734300F3E39B /* LaunchScreen.storyboard */,
-				117E767C1E78734300F3E39B /* Info.plist */,
+				11FC09961E788368001AC03B /* Supporting Files */,
 			);
 			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		11FC09931E78830D001AC03B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				117E76721E78734300F3E39B /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		11FC09941E788319001AC03B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		11FC09951E78831E001AC03B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		11FC09961E788368001AC03B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				117E76771E78734300F3E39B /* Assets.xcassets */,
+				117E767C1E78734300F3E39B /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				117E76731E78734300F3E39B /* ViewController.swift in Sources */,
+				117E76731E78734300F3E39B /* LoginViewController.swift in Sources */,
 				117E76711E78734300F3E39B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +334,7 @@
 				117E76811E78734300F3E39B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
