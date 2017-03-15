@@ -6,7 +6,7 @@
 //  Copyright © 2017 Nozary. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Utility functions go here
 class Utils {
@@ -18,6 +18,17 @@ class Utils {
             NSLocalizedFailureReasonErrorKey: reason
         ]
         return NSError(domain: Bundle.main.bundleIdentifier!, code: code, userInfo: userInfo)
+    }
+    
+    class func alert(title: String, message: String) -> UIAlertController {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alertController.addAction(action)
+        
+        return alertController
     }
     
 }

@@ -20,6 +20,7 @@
 		11B4E8DB1E79A96500501F3D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8DA1E79A96500501F3D /* Utils.swift */; };
 		11B4E8DD1E79AFCC00501F3D /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8DC1E79AFCC00501F3D /* Endpoints.swift */; };
 		11B4E8DF1E79D06200501F3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8DE1E79D06200501F3D /* Constants.swift */; };
+		11B4E8E11E79D8CB00501F3D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8E01E79D8CB00501F3D /* SignupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		11B4E8DA1E79A96500501F3D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		11B4E8DC1E79AFCC00501F3D /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		11B4E8DE1E79D06200501F3D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		11B4E8E01E79D8CB00501F3D /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				117E76721E78734300F3E39B /* LoginViewController.swift */,
+				11B4E8E01E79D8CB00501F3D /* SignupViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11B4E8E11E79D8CB00501F3D /* SignupViewController.swift in Sources */,
 				11B4E8D21E79A0AC00501F3D /* StudentInformation.swift in Sources */,
 				11B4E8D81E79A18D00501F3D /* Client.swift in Sources */,
 				117E76731E78734300F3E39B /* LoginViewController.swift in Sources */,
