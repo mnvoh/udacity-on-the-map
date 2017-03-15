@@ -104,12 +104,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="tVd-4G-gfw"/>
                     <connections>
-                        <segue destination="Shx-84-MMH" kind="show" identifier="loginToMain" id="IOV-sS-wcT"/>
+                        <segue destination="BPX-sq-HNF" kind="show" identifier="loginToMain" id="0Zx-5J-A5q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1572" y="778"/>
+            <point key="canvasLocation" x="2241" y="778"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gCh-cg-kgL">
@@ -336,23 +336,6 @@ Cg
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ud-h5-nuF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4400.8000000000002" y="777.66116941529242"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="hMV-ck-hZU">
-            <objects>
-                <tabBarController id="Shx-84-MMH" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="avL-HN-0CJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="BPX-sq-HNF" kind="relationship" relationship="viewControllers" id="mpV-Pn-qZO"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y2V-Gi-IAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2454" y="778"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="JS3-tp-pQ3">
