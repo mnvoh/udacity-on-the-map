@@ -19,6 +19,7 @@
 		11B4E8D81E79A18D00501F3D /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8D71E79A18D00501F3D /* Client.swift */; };
 		11B4E8DB1E79A96500501F3D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8DA1E79A96500501F3D /* Utils.swift */; };
 		11B4E8DD1E79AFCC00501F3D /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8DC1E79AFCC00501F3D /* Endpoints.swift */; };
+		11B4E8DF1E79D06200501F3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8DE1E79D06200501F3D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		11B4E8D71E79A18D00501F3D /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		11B4E8DA1E79A96500501F3D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		11B4E8DC1E79AFCC00501F3D /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		11B4E8DE1E79D06200501F3D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				117E76791E78734300F3E39B /* LaunchScreen.storyboard */,
 				11FC09961E788368001AC03B /* Supporting Files */,
 				11B4E8DA1E79A96500501F3D /* Utils.swift */,
+				11B4E8DE1E79D06200501F3D /* Constants.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				117E76731E78734300F3E39B /* LoginViewController.swift in Sources */,
 				117E76711E78734300F3E39B /* AppDelegate.swift in Sources */,
 				11B4E8D61E79A17B00501F3D /* ParseApiClient.swift in Sources */,
+				11B4E8DF1E79D06200501F3D /* Constants.swift in Sources */,
 				11B4E8CF1E79969300501F3D /* ButtonWithPadding.swift in Sources */,
 				11B4E8D41E79A16F00501F3D /* UdacityApiClient.swift in Sources */,
 				11B4E8DD1E79AFCC00501F3D /* Endpoints.swift in Sources */,

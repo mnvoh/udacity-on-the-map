@@ -13,13 +13,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let client = Client()
-        client.post("http://zeyton.com", body: [
-            "Hey": "You",
-            "I'm": 26
-        ], headers: nil) { (data: Data?, response: URLResponse?, error: Error?) in
-            // do nothing
-        }
+        
         
     }
 

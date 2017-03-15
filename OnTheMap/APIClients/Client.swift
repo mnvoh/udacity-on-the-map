@@ -26,7 +26,8 @@ class Client {
             return
         }
         
-        var request = URLRequest(url: nsUrl)
+        var request = URLRequest(url: nsUrl, cachePolicy: .useProtocolCachePolicy,
+                                 timeoutInterval: TimeInterval(Constants.Defaults.defaultTimeout))
         
         request.httpMethod = "GET"
         
@@ -57,7 +58,8 @@ class Client {
             return
         }
         
-        var request = URLRequest(url: nsUrl)
+        var request = URLRequest(url: nsUrl, cachePolicy: .useProtocolCachePolicy,
+                                 timeoutInterval: TimeInterval(Constants.Defaults.defaultTimeout))
         
         request.httpMethod = "POST"
         
@@ -74,7 +76,9 @@ class Client {
             request.httpBody = jsonData
         }
         catch {
-            completionHandler(nil, nil, Utils.e("Invalid request body", reason: "The request body is invalid", code: 0))
+            completionHandler(nil, nil, Utils.e(Constants.ErrorMessages.invalidRequestBody,
+                                                reason: Constants.ErrorMessages.invalidRequestBody,
+                                                code: Constants.ErrorCodes.invalidRequestBody))
             return
         }
         
@@ -97,7 +101,8 @@ class Client {
             return
         }
         
-        var request = URLRequest(url: nsUrl)
+        var request = URLRequest(url: nsUrl, cachePolicy: .useProtocolCachePolicy,
+                                 timeoutInterval: TimeInterval(Constants.Defaults.defaultTimeout))
         
         request.httpMethod = "PUT"
         
@@ -137,7 +142,8 @@ class Client {
             return
         }
         
-        var request = URLRequest(url: nsUrl)
+        var request = URLRequest(url: nsUrl, cachePolicy: .useProtocolCachePolicy,
+                                 timeoutInterval: TimeInterval(Constants.Defaults.defaultTimeout))
         
         request.httpMethod = "DELETE"
         
@@ -156,5 +162,33 @@ class Client {
         }
         
         task.resume()
+    }
+    
+    final func process(responseAndError response: URLResponse?, error: Error?) -> String {
+        
+        if let error = error {
+            let nsError = error as NSError
+            
+            switch nsError.code {
+            case NSURLErrorTimedOut:
+                return Constants.ErrorMessages.timedOut
+            case Constants.ErrorCodes.invalidRequestBody:
+                return Constants.ErrorMessages.invalidRequestBody
+            default:
+                break
+            }
+        }
+        
+        if let response = response {
+            let httpResponse = response as! HTTPURLResponse
+            switch httpResponse.statusCode {
+            case 403:
+                return Constants.ErrorMessages.invalidCredentials
+            default:
+                return Constants.ErrorMessages.unknownError
+            }
+        }
+        
+        return Constants.ErrorMessages.unknownError
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// This class abstracts the calls made to client for requests made
 /// to the Udacity API endpoints
@@ -18,7 +19,12 @@ class UdacityApiClient: Client {
     /// enforce singleton, prevent initialization outside
     private override init() {}
     
-    func login(email: String, password: String, _ completionHandler: (Void) -> Void) {
+    
+    /// Takes care of logging in. 
+    /// - parameter email: The email
+    /// - parameter password: The password
+    /// - parameter completionHandler: (accountKey: Int?, sessionId: String?, error: String?) -> Void
+    func login(email: String, password: String, _ completionHandler: @escaping (Int?, String?, String?) -> Void) {
         let url = Endpoints.Base.udacity + Endpoints.UdacityActions.session
         
         let params = [
@@ -35,14 +41,40 @@ class UdacityApiClient: Client {
         
         post(url, body: params, headers: headers) { (data, response, error) in
             guard let data = data else {
-                // TODO: error
+                completionHandler(nil, nil, self.process(responseAndError: response, error: error))
                 return
             }
             
-            let range = Range(0 ..< 5)
+            // as per udacity's instructions, the first 5 bytes of the response
+            // are dummy data!
+            let range = Range(5 ..< data.count)
             let subData = data.subdata(in: range)
-            let json = JSONSerialization.jsonObject(with: subData, options: .allowFragments)
-            print(json)
+            do {
+                let json = try JSONSerialization.jsonObject(with: subData, options: .allowFragments)
+                    as! [AnyHashable: Any]
+                if let responseError = json["error"] {
+                    completionHandler(nil, nil, responseError as? String)
+                    return
+                }
+                
+                let account = json["account"] as? [AnyHashable: Any]
+                let session = json["session"] as? [AnyHashable: Any]
+                
+                if account != nil, session != nil {
+                    // store the retrieved data in the app delegate
+                    let accountKey = Int(account!["key"] as! String)
+                    let sessionId = session!["id"] as! String
+                    
+                    completionHandler(accountKey, sessionId, nil)
+                    return
+                }
+                
+                completionHandler(nil, nil, Constants.ErrorMessages.unknownError)
+            }
+            catch {
+                completionHandler(nil, nil, Constants.ErrorMessages.unknownError)
+                return
+            }
         }
     }
 }
