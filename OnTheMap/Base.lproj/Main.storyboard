@@ -123,6 +123,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lo7-Rm-Td1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="534"/>
+                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPW-Ob-2fh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="533.5"/>
                                 <subviews>
@@ -174,7 +177,7 @@ Cg
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZnU-jq-UyN">
                                         <rect key="frame" x="0.0" y="165" width="375" height="368.5"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xu2-mk-VFO">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xu2-mk-VFO">
                                                 <rect key="frame" x="8" y="44" width="359" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="NSy-S6-mTA"/>
@@ -183,8 +186,8 @@ Cg
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What you wanna share?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2eq-VQ-oOG">
-                                                <rect key="frame" x="8" y="280.5" width="359" height="44"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What you wanna share?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2eq-VQ-oOG">
+                                                <rect key="frame" x="8" y="280" width="359" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="c5F-hw-rMF"/>
                                                 </constraints>
@@ -219,9 +222,30 @@ Cg
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CK-Mg-Irv">
                                 <rect key="frame" x="0.0" y="533.5" width="375" height="133.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llK-El-hxL">
-                                        <rect key="frame" x="132" y="52" width="111" height="30"/>
-                                        <state key="normal" title="Find on the Map"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llK-El-hxL" customClass="ButtonWithPadding" customModule="OnTheMap" customModuleProvider="target">
+                                        <rect key="frame" x="107" y="50" width="161" height="34"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Find on the Map">
+                                            <color key="titleColor" red="0.30655163526535034" green="0.48844361305236816" blue="0.60516065359115601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="topPadding">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomPadding">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89794141054153442" green="0.89809560775756836" blue="0.89793163537979126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -238,9 +262,13 @@ Cg
                             <constraint firstItem="KPW-Ob-2fh" firstAttribute="top" secondItem="Dar-Za-Tez" secondAttribute="top" id="1qg-23-cVr"/>
                             <constraint firstItem="KPW-Ob-2fh" firstAttribute="height" secondItem="Dar-Za-Tez" secondAttribute="height" multiplier="0.8" id="1xF-Cw-XHf"/>
                             <constraint firstAttribute="trailing" secondItem="KPW-Ob-2fh" secondAttribute="trailing" id="4D6-mU-W3C"/>
+                            <constraint firstItem="Lo7-Rm-Td1" firstAttribute="top" secondItem="Dar-Za-Tez" secondAttribute="top" id="9wV-xN-gT3"/>
                             <constraint firstItem="INZ-RY-i08" firstAttribute="top" secondItem="3CK-Mg-Irv" secondAttribute="bottom" id="KcX-mh-bIz"/>
                             <constraint firstItem="3CK-Mg-Irv" firstAttribute="leading" secondItem="Dar-Za-Tez" secondAttribute="leading" id="OlL-gh-zT8"/>
                             <constraint firstItem="KPW-Ob-2fh" firstAttribute="leading" secondItem="Dar-Za-Tez" secondAttribute="leading" id="WW5-ez-2Bv"/>
+                            <constraint firstAttribute="trailing" secondItem="Lo7-Rm-Td1" secondAttribute="trailing" id="dbh-mG-J5o"/>
+                            <constraint firstItem="3CK-Mg-Irv" firstAttribute="top" secondItem="Lo7-Rm-Td1" secondAttribute="bottom" id="fKO-OQ-MXv"/>
+                            <constraint firstItem="Lo7-Rm-Td1" firstAttribute="leading" secondItem="Dar-Za-Tez" secondAttribute="leading" id="v8i-W0-rpK"/>
                         </constraints>
                     </view>
                 </viewController>
