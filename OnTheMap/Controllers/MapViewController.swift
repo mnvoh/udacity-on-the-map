@@ -50,6 +50,7 @@ class MapViewController: UIViewController {
   }
   
   @IBAction func refresh(_ sender: Any) {
+    loadData()
   }
   
   
