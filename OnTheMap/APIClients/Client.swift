@@ -50,7 +50,7 @@ class Client {
 
     
     /// Makes a POST request to an endpoint
-    final func post(_ url: String, body requestBody: [String: Any], headers httpHeaders: [String: String]!,
+    final func post(_ url: String, body requestBody: String, headers httpHeaders: [String: String]!,
               _ completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         
         guard let nsUrl = URL(string: url) else {
@@ -70,17 +70,7 @@ class Client {
             }
         }
         
-        // construct the http body
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: requestBody, options: .prettyPrinted)
-            request.httpBody = jsonData
-        }
-        catch {
-            completionHandler(nil, nil, Utils.e(Constants.ErrorMessages.invalidRequestBody,
-                                                reason: Constants.ErrorMessages.invalidRequestBody,
-                                                code: Constants.ErrorCodes.invalidRequestBody))
-            return
-        }
+        request.httpBody = requestBody.data(using: .utf8)
         
         // get the session and make the request
         let session = URLSession.shared
@@ -93,7 +83,7 @@ class Client {
     }
     
     /// Makes a PUT request to an endpoint
-    final func put(_ url: String, body requestBody: [String: Any], headers httpHeaders: [String: String]!,
+    final func put(_ url: String, body requestBody: String, headers httpHeaders: [String: String]!,
               _ completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         
         guard let nsUrl = URL(string: url) else {
@@ -113,15 +103,7 @@ class Client {
             }
         }
         
-        // construct the http body
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: requestBody, options: .prettyPrinted)
-            request.httpBody = jsonData
-        }
-        catch {
-            completionHandler(nil, nil, Utils.e("Invalid request body", reason: "The request body is invalid", code: 0))
-            return
-        }
+        request.httpBody = requestBody.data(using: .utf8)
         
         // get the session and make the request
         let session = URLSession.shared

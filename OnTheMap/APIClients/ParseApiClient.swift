@@ -70,21 +70,94 @@ class ParseApiClient: Client {
     
   }
   
-  func getStudentLocation(_ uniqueKey: Int, _ completionHandler: (StudentInformation?, String?) -> Void) {
+  func getStudentLocation(_ uniqueKey: Int, _ completionHandler: @escaping (StudentInformation?, String?) -> Void) {
     
+    let url = Endpoints.Base.parse + Endpoints.ParseAction.studentLocation
     
+    let headers = [
+      "X-Parse-Application-Id": Constants.parseAppId,
+      "X-Parse-REST-API-Key": Constants.parseApiKey
+    ]
+    
+    let params = [
+      "where": "{\"uniqueKey\":\"\(uniqueKey)\"}",
+      "limit": "100"
+    ]
+    
+    get(url, parameters: params, headers: headers) { (data, response, error) in
+      if let error = error {
+        completionHandler(nil, self.process(responseAndError: response, error: error))
+        return
+      }
+      
+      guard let data = data else {
+        completionHandler(nil, self.process(responseAndError: response, error: error))
+        return
+      }
+      
+      do {
+        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [AnyHashable: Any]
+        if let results = json["results"] {
+          for result in results as! [[AnyHashable: Any]] {
+            let latitude = Double(result["latitude"] as! NSNumber)
+            let longitude = Double(result["longitude"] as! NSNumber)
+            let studentInfo = StudentInformation(objectId: result["objectId"] as! String,
+                                                 uniqueKey: result["uniqueKey"] as! String,
+                                                 firstName: result["firstName"] as! String,
+                                                 lastName: result["lastName"] as! String,
+                                                 mapString: result["mapString"] as! String,
+                                                 mediaUrl: result["mediaURL"] as! String,
+                                                 latitude: latitude,
+                                                 longitude: longitude)
+            completionHandler(studentInfo, nil)
+            return
+          }
+        }
+      }
+      catch {
+        completionHandler(nil, Constants.ErrorMessages.unknownError)
+        return
+      }
+      
+    }
     
   }
   
-  func submitLocation(_ studentInfo: StudentInformation, _ completionHandler: (String?) -> Void) {
+  func submitLocation(_ studentInfo: StudentInformation, _ completionHandler: @escaping (String?) -> Void) {
     
-    
+    let url = Endpoints.Base.parse + Endpoints.ParseAction.studentLocation
+    let headers = [
+      "X-Parse-Application-Id": "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
+      "X-Parse-REST-API-Key": "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY",
+      "Content-Type": "application/json"
+    ]
+
+    post(url, body: studentInfo.json, headers: headers) { (data, response, error) in
+      if error != nil {
+        completionHandler(self.process(responseAndError: response, error: error))
+        return
+      }
+      completionHandler(nil)
+    }
     
   }
   
-  func updateLocation(_ studentInfo: StudentInformation, _ completionHandler: (String?) -> Void) {
+  func updateLocation(_ studentInfo: StudentInformation, _ completionHandler: @escaping (String?) -> Void) {
     
+    let url = Endpoints.Base.parse + Endpoints.ParseAction.studentLocation + "/" + studentInfo.objectId
+    let headers = [
+      "X-Parse-Application-Id": "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
+      "X-Parse-REST-API-Key": "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY",
+      "Content-Type": "application/json"
+    ]
     
+    put(url, body: studentInfo.json, headers: headers) { (data, response, error) in
+      if error != nil {
+        completionHandler(self.process(responseAndError: response, error: error))
+        return
+      }
+      completionHandler(nil)
+    }
     
   }
   
