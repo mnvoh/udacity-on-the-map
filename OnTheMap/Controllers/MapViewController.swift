@@ -21,11 +21,37 @@ class MapViewController: UIViewController {
     }
   }
   
+  // MARK: - Overrides
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     map.delegate = self
     loadData()
   }
+  
+  // MARK: - IBActions
+  
+  @IBAction func logout(_ sender: UIBarButtonItem) {
+    UdacityApiClient.sharedInstance.logout { (error) in
+      DispatchQueue.main.async {
+        if let error = error {
+          let alert = Utils.alert(title: "Error", message: error)
+          self.present(alert, animated: true, completion: nil)
+          return
+        }
+        let loginView = self.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+        self.present(loginView, animated: true, completion: nil)
+      }
+    }
+    
+  }
+
+  @IBAction func postLocation(_ sender: Any) {
+  }
+  
+  @IBAction func refresh(_ sender: Any) {
+  }
+  
   
 }
 
