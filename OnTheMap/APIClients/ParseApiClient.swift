@@ -45,17 +45,9 @@ class ParseApiClient: Client {
         if let results = json["results"] {
           var studentInformations = [StudentInformation]()
           for result in results as! [[AnyHashable: Any]] {
-            let latitude = Double(result["latitude"] as! NSNumber)
-            let longitude = Double(result["longitude"] as! NSNumber)
-            let studentInfo = StudentInformation(objectId: result["objectId"] as! String,
-                                                 uniqueKey: result["uniqueKey"] as! String,
-                                                 firstName: result["firstName"] as! String,
-                                                 lastName: result["lastName"] as! String,
-                                                 mapString: result["mapString"] as! String,
-                                                 mediaUrl: result["mediaURL"] as! String,
-                                                 latitude: latitude,
-                                                 longitude: longitude)
-            studentInformations.append(studentInfo)
+            if let studentInfo = StudentInformation.from(object: result) {
+              studentInformations.append(studentInfo)
+            }
           }
           completionHandler(studentInformations, nil)
           return
@@ -99,17 +91,9 @@ class ParseApiClient: Client {
         let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [AnyHashable: Any]
         if let results = json["results"] {
           for result in results as! [[AnyHashable: Any]] {
-            let latitude = Double(result["latitude"] as! NSNumber)
-            let longitude = Double(result["longitude"] as! NSNumber)
-            let studentInfo = StudentInformation(objectId: result["objectId"] as! String,
-                                                 uniqueKey: result["uniqueKey"] as! String,
-                                                 firstName: result["firstName"] as! String,
-                                                 lastName: result["lastName"] as! String,
-                                                 mapString: result["mapString"] as! String,
-                                                 mediaUrl: result["mediaURL"] as! String,
-                                                 latitude: latitude,
-                                                 longitude: longitude)
-            completionHandler(studentInfo, nil)
+            if let studentInfo = StudentInformation.from(object: result) {
+              completionHandler(studentInfo, nil)
+            }
             return
           }
         }

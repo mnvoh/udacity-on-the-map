@@ -32,4 +32,29 @@ struct StudentInformation {
       return "{ " + elements.joined(separator: ", ") + "}"
     }
   }
+  
+  static func from(object: [AnyHashable: Any]) -> StudentInformation? {
+    
+    if let objectId = object["objectId"] as? String,
+      let uniqueKey = object["uniqueKey"] as? String,
+      let firstname = object["firstName"] as? String,
+      let lastname = object["lastName"] as? String,
+      let mapString = object["mapString"] as? String,
+      let mediaUrl = object["mediaURL"] as? String,
+      let latitude = object["latitude"] as? NSNumber,
+      let longitude = object["longitude"] as? NSNumber {
+      
+      return StudentInformation(objectId: objectId,
+                                uniqueKey: uniqueKey,
+                                firstName: firstname,
+                                lastName: lastname,
+                                mapString: mapString,
+                                mediaUrl:  mediaUrl,
+                                latitude: Double(latitude),
+                                longitude: Double(longitude))
+    }
+    // Incomplete data, so we don't want it
+    return nil
+    
+  }
 }
