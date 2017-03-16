@@ -27,12 +27,7 @@ class UdacityApiClient: Client {
   func login(email: String, password: String, _ completionHandler: @escaping (Int?, String?, String?) -> Void) {
     let url = Endpoints.Base.udacity + Endpoints.UdacityActions.session
     
-    let params = [
-      "udacity": [
-        "username": email,
-        "password": password
-      ]
-    ]
+    let params = "{ \"udacity\": { \"username\": \"\(email)\", \"password\": \"\(password)\" } }"
     
     let headers = [
       "Accept": "application/json",
