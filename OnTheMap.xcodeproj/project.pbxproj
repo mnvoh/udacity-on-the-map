@@ -24,6 +24,7 @@
 		11B4E8E41E7A65F600501F3D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B4E8E31E7A65F600501F3D /* MapKit.framework */; };
 		11B4E8F21E7AF18200501F3D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8F11E7AF18200501F3D /* MapViewController.swift */; };
 		11B4E8F41E7AFD0300501F3D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8F31E7AFD0300501F3D /* ListViewController.swift */; };
+		11B4E8F61E7B510000501F3D /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8F51E7B510000501F3D /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		11B4E8E31E7A65F600501F3D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		11B4E8F11E7AF18200501F3D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		11B4E8F31E7AFD0300501F3D /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		11B4E8F51E7B510000501F3D /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				11B4E8E01E79D8CB00501F3D /* SignupViewController.swift */,
 				11B4E8F11E7AF18200501F3D /* MapViewController.swift */,
 				11B4E8F31E7AFD0300501F3D /* ListViewController.swift */,
+				11B4E8F51E7B510000501F3D /* PostViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			files = (
 				11B4E8E11E79D8CB00501F3D /* SignupViewController.swift in Sources */,
 				11B4E8D21E79A0AC00501F3D /* StudentInformation.swift in Sources */,
+				11B4E8F61E7B510000501F3D /* PostViewController.swift in Sources */,
 				11B4E8D81E79A18D00501F3D /* Client.swift in Sources */,
 				117E76731E78734300F3E39B /* LoginViewController.swift in Sources */,
 				117E76711E78734300F3E39B /* AppDelegate.swift in Sources */,

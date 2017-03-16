@@ -160,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="3349.5999999999999" y="1557.5712143928038"/>
         </scene>
-        <!--View Controller-->
+        <!--Post View Controller-->
         <scene sceneID="gCh-cg-kgL">
             <objects>
-                <viewController id="j8y-2I-AqF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="postLocationView" id="j8y-2I-AqF" customClass="PostViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J9u-eE-CEw"/>
                         <viewControllerLayoutGuide type="bottom" id="INZ-RY-i08"/>
@@ -325,7 +325,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ter-4x-sbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7279" y="778"/>
+            <point key="canvasLocation" x="6841" y="778"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="M5f-Re-7VQ">
@@ -390,7 +390,6 @@ Cg
                     </navigationItem>
                     <connections>
                         <outlet property="map" destination="JIq-EF-ekS" id="82r-Ho-tIG"/>
-                        <segue destination="j8y-2I-AqF" kind="show" id="cBw-Hl-u5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9gG-Xe-Po2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -436,9 +435,6 @@ Cg
                             <barButtonItem image="pin" id="hJK-Vn-UvJ"/>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <connections>
-                        <segue destination="j8y-2I-AqF" kind="show" id="g6d-SF-MZw"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKx-by-ZB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -488,7 +484,4 @@ Cg
         <image name="pin" width="32" height="32"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="cBw-Hl-u5T"/>
-    </inferredMetricsTieBreakers>
 </document>

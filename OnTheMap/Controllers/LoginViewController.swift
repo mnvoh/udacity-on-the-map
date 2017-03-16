@@ -64,6 +64,11 @@ class LoginViewController: UIViewController {
       appDelegate.accountKey = accountKey
       appDelegate.sessionId = sessionId
       
+      ParseApiClient.sharedInstance.getStudentLocation(accountKey, { (info, error) in
+        guard error == nil, info != nil else { return }
+        appDelegate.currentStudentInformation = info
+      })
+      
       DispatchQueue.main.async {
         self.performSegue(withIdentifier: "loginToMain", sender: nil)
       }

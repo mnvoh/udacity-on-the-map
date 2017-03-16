@@ -21,6 +21,11 @@ class MapViewController: UIViewController {
     }
   }
   
+  struct Storyboard {
+    static let postViewId = "postLocationView"
+    static let loginViewId = "loginView"
+  }
+  
   // MARK: - Overrides
   
   override func viewDidLoad() {
@@ -39,7 +44,8 @@ class MapViewController: UIViewController {
           self.present(alert, animated: true, completion: nil)
           return
         }
-        let loginView = self.storyboard?.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+        let loginView = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.loginViewId)
+          as! LoginViewController
         self.present(loginView, animated: true, completion: nil)
       }
     }
@@ -47,6 +53,11 @@ class MapViewController: UIViewController {
   }
 
   @IBAction func postLocation(_ sender: Any) {
+    let postView = storyboard?.instantiateViewController(withIdentifier: Storyboard.postViewId)
+      as! PostViewController
+    modalTransitionStyle = .coverVertical
+    modalPresentationStyle = .fullScreen
+    present(postView, animated: true, completion: nil)
   }
   
   @IBAction func refresh(_ sender: Any) {
