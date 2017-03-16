@@ -399,7 +399,7 @@ Cg
         <!--On the Map-->
         <scene sceneID="iS7-qd-4hs">
             <objects>
-                <tableViewController id="8mS-Dp-9Dy" sceneMemberID="viewController">
+                <tableViewController id="8mS-Dp-9Dy" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Myf-6E-0Ar">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -429,10 +429,22 @@ Cg
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On the Map" id="pCx-e2-oY5">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="OLs-og-RXe"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="OLs-og-RXe">
+                            <connections>
+                                <action selector="logout:" destination="8mS-Dp-9Dy" id="mBq-qo-RP6"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="3WX-b5-qm4"/>
-                            <barButtonItem image="pin" id="hJK-Vn-UvJ"/>
+                            <barButtonItem systemItem="refresh" id="3WX-b5-qm4">
+                                <connections>
+                                    <action selector="refresh:" destination="8mS-Dp-9Dy" id="94B-Ia-Nv8"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="hJK-Vn-UvJ">
+                                <connections>
+                                    <action selector="postLocation:" destination="8mS-Dp-9Dy" id="jic-em-g4z"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>

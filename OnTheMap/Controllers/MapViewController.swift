@@ -49,21 +49,37 @@ class MapViewController: UIViewController {
         self.present(loginView, animated: true, completion: nil)
       }
     }
-    
   }
 
   @IBAction func postLocation(_ sender: Any) {
-    let postView = storyboard?.instantiateViewController(withIdentifier: Storyboard.postViewId)
-      as! PostViewController
-    modalTransitionStyle = .coverVertical
-    modalPresentationStyle = .fullScreen
-    present(postView, animated: true, completion: nil)
+    func showPostView() {
+      let postView = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.postViewId)
+        as! PostViewController
+      self.modalTransitionStyle = .coverVertical
+      self.modalPresentationStyle = .fullScreen
+      self.present(postView, animated: true, completion: nil)
+    }
+    
+    if (UIApplication.shared.delegate as! AppDelegate).currentStudentInformation != nil {
+      let alertController = UIAlertController(title: "Overwrite?", message: "Overwrite your current posted location?",
+                                              preferredStyle: .alert)
+      let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+      let actionOk = UIAlertAction(title: "OK", style: .destructive) { (action) in
+        showPostView()
+      }
+      alertController.addAction(actionCancel)
+      alertController.addAction(actionOk)
+      
+      present(alertController, animated: true, completion: nil)
+    }
+    else {
+      showPostView()
+    }
   }
   
   @IBAction func refresh(_ sender: Any) {
     loadData()
   }
-  
   
 }
 
@@ -126,7 +142,7 @@ extension MapViewController {
         }
         return
       }
-      print(locations)
+
       guard let locations = locations else { return }
       self.data = locations
     }
