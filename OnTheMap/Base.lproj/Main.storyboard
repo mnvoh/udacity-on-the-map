@@ -348,7 +348,7 @@ Cg
         <!--On the Map-->
         <scene sceneID="OaL-oi-fOc">
             <objects>
-                <viewController id="zXX-3g-leZ" sceneMemberID="viewController">
+                <viewController id="zXX-3g-leZ" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hQ3-yX-hkV"/>
                         <viewControllerLayoutGuide type="bottom" id="Okd-nJ-zVQ"/>
@@ -377,6 +377,7 @@ Cg
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="map" destination="JIq-EF-ekS" id="82r-Ho-tIG"/>
                         <segue destination="j8y-2I-AqF" kind="show" id="cBw-Hl-u5T"/>
                     </connections>
                 </viewController>

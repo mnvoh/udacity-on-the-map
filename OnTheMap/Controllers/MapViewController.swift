@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UITabBarController {
+class MapViewController: UIViewController {
   
   // MARK: - IBOutlets
   @IBOutlet weak var map: MKMapView!
@@ -19,18 +19,6 @@ class MapViewController: UITabBarController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-//    tableView.isHidden = true
-    
-    selectedIndex = 0
-  }
-  
-}
-
-// MARK: - UITabBar Delegate
-extension MapViewController {
-  
-  override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
     
   }
   

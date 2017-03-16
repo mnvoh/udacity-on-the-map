@@ -7,3 +7,85 @@
 //
 
 import Foundation
+
+class ParseApiClient: Client {
+  
+  /// singleton
+  static let sharedInstance = ParseApiClient()
+  
+  /// enforce singleton, prevent initialization outside
+  private override init() {}
+  
+  func getLocations(_ completionHandler: @escaping ([StudentInformation]?, String?) -> Void) {
+    
+    let url = Endpoints.Base.parse + Endpoints.ParseAction.studentLocation
+    
+    let headers = [
+      "X-Parse-Application-Id": Constants.parseAppId,
+      "X-Parse-REST-API-Key": Constants.parseApiKey
+    ]
+    
+    let params = [
+      "limit": "100"
+    ]
+    
+    get(url, parameters: params, headers: headers) { (data, response, error) in
+      if let error = error {
+        completionHandler(nil, self.process(responseAndError: response, error: error))
+        return
+      }
+      
+      guard let data = data else {
+        completionHandler(nil, self.process(responseAndError: response, error: error))
+        return
+      }
+      
+      do {
+        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [AnyHashable: Any]
+        if let results = json["results"] {
+          var studentInformations = [StudentInformation]()
+          for result in results as! [[AnyHashable: Any]] {
+            let latitude = Double(result["latitude"] as! NSNumber)
+            let longitude = Double(result["longitude"] as! NSNumber)
+            let studentInfo = StudentInformation(objectId: result["objectId"] as! String,
+                                                 uniqueKey: result["uniqueKey"] as! String,
+                                                 firstName: result["firstName"] as! String,
+                                                 lastName: result["lastName"] as! String,
+                                                 mapString: result["mapString"] as! String,
+                                                 mediaUrl: result["mediaURL"] as! String,
+                                                 latitude: latitude,
+                                                 longitude: longitude)
+            studentInformations.append(studentInfo)
+          }
+          completionHandler(studentInformations, nil)
+          return
+        }
+      }
+      catch {
+        completionHandler(nil, Constants.ErrorMessages.unknownError)
+        return
+      }
+      
+    }
+    
+  }
+  
+  func getStudentLocation(_ uniqueKey: Int, _ completionHandler: (StudentInformation?, String?) -> Void) {
+    
+    
+    
+  }
+  
+  func submitLocation(_ studentInfo: StudentInformation, _ completionHandler: (String?) -> Void) {
+    
+    
+    
+  }
+  
+  func updateLocation(_ studentInfo: StudentInformation, _ completionHandler: (String?) -> Void) {
+    
+    
+    
+  }
+  
+}
