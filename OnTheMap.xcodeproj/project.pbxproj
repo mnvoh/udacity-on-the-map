@@ -21,6 +21,7 @@
 		11B4E8DD1E79AFCC00501F3D /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8DC1E79AFCC00501F3D /* Endpoints.swift */; };
 		11B4E8DF1E79D06200501F3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8DE1E79D06200501F3D /* Constants.swift */; };
 		11B4E8E11E79D8CB00501F3D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B4E8E01E79D8CB00501F3D /* SignupViewController.swift */; };
+		11B4E8E41E7A65F600501F3D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B4E8E31E7A65F600501F3D /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		11B4E8DC1E79AFCC00501F3D /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		11B4E8DE1E79D06200501F3D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		11B4E8E01E79D8CB00501F3D /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		11B4E8E31E7A65F600501F3D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11B4E8E41E7A65F600501F3D /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +61,7 @@
 			children = (
 				117E766F1E78734300F3E39B /* OnTheMap */,
 				117E766E1E78734300F3E39B /* Products */,
+				11B4E8E21E7A65F500501F3D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +99,14 @@
 				11B4E8DC1E79AFCC00501F3D /* Endpoints.swift */,
 			);
 			path = APIClients;
+			sourceTree = "<group>";
+		};
+		11B4E8E21E7A65F500501F3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11B4E8E31E7A65F600501F3D /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		11FC09931E78830D001AC03B /* Controllers */ = {
