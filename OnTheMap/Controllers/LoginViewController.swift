@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
                                            name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)),
                                            name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    activityIndicator.isHidden = true
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -60,9 +61,9 @@ class LoginViewController: UIViewController {
       
       guard let accountKey = accountKey, let sessionId = sessionId else {
         DispatchQueue.main.async {
-          self.present(Utils.alert(title: "Login Error", message: error!), animated: true, completion: nil)
-          self.loginButton.isEnabled = true
           self.activityIndicator.isHidden = true
+          self.loginButton.isEnabled = true
+          self.present(Utils.alert(title: "Login Error", message: error!), animated: true, completion: nil)
         }
         return
       }
