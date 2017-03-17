@@ -118,6 +118,7 @@
                         <outlet property="activityIndicator" destination="0tp-N6-MaA" id="gN7-fA-r41"/>
                         <outlet property="emailField" destination="iaD-aK-nkm" id="mWR-hN-fNY"/>
                         <outlet property="loginButton" destination="u7r-yU-TFb" id="LN4-5Z-iI0"/>
+                        <outlet property="loginLabel" destination="5eb-EM-ght" id="8eL-Ro-gws"/>
                         <outlet property="passwordField" destination="43K-3s-azK" id="4vD-M3-zhr"/>
                     </connections>
                 </viewController>

@@ -45,9 +45,7 @@ class ParseApiClient: Client {
         if let results = json["results"] {
           var studentInformations = [StudentInformation]()
           for result in results as! [[AnyHashable: Any]] {
-            if let studentInfo = StudentInformation.from(object: result) {
-              studentInformations.append(studentInfo)
-            }
+            studentInformations.append(StudentInformation(object: result))
           }
           completionHandler(studentInformations, nil)
           return
@@ -92,9 +90,7 @@ class ParseApiClient: Client {
         let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [AnyHashable: Any]
         if let results = json["results"] {
           for result in results as! [[AnyHashable: Any]] {
-            if let studentInfo = StudentInformation.from(object: result) {
-              completionHandler(studentInfo, nil)
-            }
+            completionHandler(StudentInformation(object: result), nil)
             return
           }
         }

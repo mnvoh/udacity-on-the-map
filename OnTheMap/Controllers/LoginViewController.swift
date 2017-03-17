@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var passwordField: UITextField!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var loginButton: UIButton!
+  @IBOutlet weak var loginLabel: UILabel!
   
   
   override func viewDidLoad() {
@@ -70,6 +71,7 @@ class LoginViewController: UIViewController {
       appDelegate.accountKey = accountKey
       appDelegate.sessionId = sessionId
       
+      // get the previous location submission of the user, if any
       ParseApiClient.sharedInstance.getStudentLocation(accountKey, { (info, error) in
         guard error == nil, info != nil else {
           return
@@ -77,6 +79,7 @@ class LoginViewController: UIViewController {
         appDelegate.currentStudentInformation = info
       })
       
+      // get the user information so that we can use in the location submission process
       UdacityApiClient.sharedInstance.getPublicUserData("\(accountKey)", { (error) in
         
       })
@@ -94,10 +97,8 @@ class LoginViewController: UIViewController {
   }
   
   @objc func keyboardWillAppear(_ notification: Notification) {
-    let keyboardRect = notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect
-    if keyboardRect != nil {
-      view.frame.origin.y = -keyboardRect!.height
-    }
+    // Push the view up until the login label is just below the status bar
+    view.frame.origin.y = -loginLabel.frame.origin.y + 20
   }
   @objc func keyboardWillDisappear(_ notification: Notification) {
     view.frame.origin.y = 0
