@@ -26,7 +26,8 @@ class ParseApiClient: Client {
     ]
     
     let params = [
-      "limit": "100"
+      "limit": "100",
+      "order": "-updatedAt"
     ]
     
     get(url, parameters: params, headers: headers) { (data, response, error) in
