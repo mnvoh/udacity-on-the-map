@@ -105,7 +105,6 @@ class UdacityApiClient: Client {
     
     get(url, parameters: [:], headers: nil) { (data, response, error) in
       guard let data = data else {
-        print(error)
         completionHandler(self.process(responseAndError: response, error: error))
         return
       }
@@ -124,7 +123,6 @@ class UdacityApiClient: Client {
         let appd = UIApplication.shared.delegate as! AppDelegate
         appd.firstname = (firstname != nil) ? firstname! : ""
         appd.lastname = (lastname != nil) ? lastname! : ""
-        print(firstname, lastname)
       }
       catch {
         completionHandler(error.localizedDescription)
