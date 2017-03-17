@@ -54,7 +54,7 @@ class ParseApiClient: Client {
         }
       }
       catch {
-        completionHandler(nil, Constants.ErrorMessages.unknownError)
+        completionHandler(nil, error.localizedDescription)
         return
       }
       
@@ -99,7 +99,7 @@ class ParseApiClient: Client {
         }
       }
       catch {
-        completionHandler(nil, Constants.ErrorMessages.unknownError)
+        completionHandler(nil, error.localizedDescription)
         return
       }
       

@@ -66,19 +66,20 @@ class LoginViewController: UIViewController {
       
       ParseApiClient.sharedInstance.getStudentLocation(accountKey, { (info, error) in
         guard error == nil, info != nil else {
-          UdacityApiClient.sharedInstance.getPublicUserData("\(accountKey)", { (info, error) in
-            
-          })
+          
           return
         }
         appDelegate.currentStudentInformation = info
+      })
+      
+      UdacityApiClient.sharedInstance.getPublicUserData("\(accountKey)", { (error) in
+        
       })
       
       DispatchQueue.main.async {
         self.performSegue(withIdentifier: "loginToMain", sender: nil)
       }
     }
-    
     
   }
   

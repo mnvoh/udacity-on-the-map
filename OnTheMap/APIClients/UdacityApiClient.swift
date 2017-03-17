@@ -99,13 +99,14 @@ class UdacityApiClient: Client {
     }
   }
   
-  func getPublicUserData(_ id: String, _ completionHandler: @escaping (StudentInformation?, String?) -> Void) {
+  func getPublicUserData(_ id: String, _ completionHandler: @escaping (String?) -> Void) {
     
     let url = Endpoints.Base.udacity + Endpoints.UdacityActions.users + "/\(id)"
     
     get(url, parameters: [:], headers: nil) { (data, response, error) in
       guard let data = data else {
-        completionHandler(nil, self.process(responseAndError: response, error: error))
+        print(error)
+        completionHandler(self.process(responseAndError: response, error: error))
         return
       }
       
@@ -115,15 +116,18 @@ class UdacityApiClient: Client {
         let json = try JSONSerialization.jsonObject(with: subData, options: .allowFragments)
           as! [AnyHashable: Any]
         
-        let firstname = json["first_name"] as? String
-        let lastname = json["last_name"] as? String
+        guard let user = json["user"] as? [AnyHashable: Any] else { return }
+        
+        let firstname = user["first_name"] as? String
+        let lastname = user["last_name"] as? String
         
         let appd = UIApplication.shared.delegate as! AppDelegate
         appd.firstname = (firstname != nil) ? firstname! : ""
         appd.lastname = (lastname != nil) ? lastname! : ""
+        print(firstname, lastname)
       }
       catch {
-        completionHandler(nil, error.localizedDescription)
+        completionHandler(error.localizedDescription)
       }
     }
     

@@ -116,7 +116,9 @@ class PostViewController: UIViewController {
         self.inMapMode = true
       }
     }
-    
+    else {
+      postUserData()
+    }
   }
   
 }
@@ -125,6 +127,60 @@ class PostViewController: UIViewController {
 // MARK: - Public/private functions
 extension PostViewController {
   
-  
+  fileprivate func postUserData() {
+    findButtonAcitivtyIndicator.isHidden = false
+    if mediaUrlField.text == "" {
+      present(Utils.alert(title: "Empty URL", message: "Please enter a URL"), animated: true, completion: nil)
+      findButtonAcitivtyIndicator.isHidden = true
+      return
+    }
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    if let csi = appDelegate.currentStudentInformation {
+      // csi: current student info
+      let info = StudentInformation(objectId: csi.objectId,
+                                    uniqueKey: csi.uniqueKey,
+                                    firstName: csi.firstName,
+                                    lastName: csi.lastName,
+                                    mapString: locationField.text!,
+                                    mediaUrl: mediaUrlField.text!,
+                                    latitude: selectedLocation.latitude,
+                                    longitude: selectedLocation.longitude)
+      ParseApiClient.sharedInstance.updateLocation(info, { (error) in
+        if let error = error {
+          DispatchQueue.main.async {
+            self.present(Utils.alert(title: "Error", message: error), animated: true, completion: nil)
+            self.findButtonAcitivtyIndicator.isHidden = true
+          }
+          return
+        }
+        self.findButtonAcitivtyIndicator.isHidden = true
+        self.dismiss(animated: true, completion: nil)
+      })
+    }
+    else {
+      let info = StudentInformation(objectId: "",
+                                    uniqueKey: "\(appDelegate.accountKey!)",
+                                    firstName: appDelegate.firstname,
+                                    lastName: appDelegate.lastname,
+                                    mapString: locationField.text!,
+                                    mediaUrl: mediaUrlField.text!,
+                                    latitude: selectedLocation.latitude,
+                                    longitude: selectedLocation.longitude)
+      ParseApiClient.sharedInstance.submitLocation(info, { (error) in
+        if let error = error {
+          DispatchQueue.main.async {
+            self.present(Utils.alert(title: "Error", message: error), animated: true, completion: nil)
+            self.findButtonAcitivtyIndicator.isHidden = true
+          }
+          return
+        }
+        self.findButtonAcitivtyIndicator.isHidden = true
+        self.dismiss(animated: true, completion: nil)
+      })
+    }
+    
+  }
   
 }

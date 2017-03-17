@@ -82,11 +82,8 @@ class ListViewController: UITableViewController {
 extension ListViewController {
   
   func openUrl(url: String) {
-    var conformedUrl = url
-    if conformedUrl.substring(to: conformedUrl.index(conformedUrl.startIndex, offsetBy: 4)) != "http" {
-      conformedUrl = "http://\(url)"
-    }
-    guard let _url = URL(string: conformedUrl) else {
+    guard let _url = URL(string: url) else {
+      present(Utils.alert(title: "Invalid URL", message: "The provided URL is invalid"), animated: true, completion: nil)
       return
     }
     UIApplication.shared.open(_url, options: [:], completionHandler: nil)
