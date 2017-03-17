@@ -171,6 +171,6 @@ class Client {
       }
     }
     
-    return Constants.ErrorMessages.unknownError + "\n Error: \(error) \n Response: \(response)"
+    return Constants.ErrorMessages.unknownError + ((error != nil) ? (error?.localizedDescription)! : "")
   }
 }

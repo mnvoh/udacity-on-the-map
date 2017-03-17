@@ -229,7 +229,7 @@ Cg
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What you wanna share?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2eq-VQ-oOG">
-                                                <rect key="frame" x="8" y="280.5" width="359" height="44"/>
+                                                <rect key="frame" x="8" y="292.5" width="359" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="c5F-hw-rMF"/>
                                                 </constraints>
@@ -241,7 +241,7 @@ Cg
                                         <color key="backgroundColor" red="0.31764705882352939" green="0.53725490196078429" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Xu2-mk-VFO" secondAttribute="trailing" constant="8" id="54s-3o-ZfT"/>
-                                            <constraint firstAttribute="bottom" secondItem="2eq-VQ-oOG" secondAttribute="bottom" constant="44" id="CjW-ZG-YAt"/>
+                                            <constraint firstAttribute="bottom" secondItem="2eq-VQ-oOG" secondAttribute="bottom" constant="32" id="CjW-ZG-YAt"/>
                                             <constraint firstItem="Xu2-mk-VFO" firstAttribute="leading" secondItem="ZnU-jq-UyN" secondAttribute="leading" constant="8" id="Dn1-jl-RDI"/>
                                             <constraint firstItem="2eq-VQ-oOG" firstAttribute="leading" secondItem="ZnU-jq-UyN" secondAttribute="leading" constant="8" id="Sv3-WM-sPX"/>
                                             <constraint firstAttribute="trailing" secondItem="2eq-VQ-oOG" secondAttribute="trailing" constant="8" id="kcq-fA-gPx"/>
