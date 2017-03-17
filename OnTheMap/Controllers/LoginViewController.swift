@@ -19,18 +19,24 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
-    
+    emailField.delegate = self
+    passwordField.delegate = self
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = true
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)),
+                                           name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)),
+                                           name: NSNotification.Name.UIKeyboardWillHide, object: nil)
   }
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     navigationController?.navigationBar.isHidden = false
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
   }
   
   
@@ -66,10 +72,8 @@ class LoginViewController: UIViewController {
       
       ParseApiClient.sharedInstance.getStudentLocation(accountKey, { (info, error) in
         guard error == nil, info != nil else {
-          print("ERROR --- HERE ---------------", error)
           return
         }
-        print("INFO --- HERE ---------------", info)
         appDelegate.currentStudentInformation = info
       })
       
@@ -78,10 +82,40 @@ class LoginViewController: UIViewController {
       })
       
       DispatchQueue.main.async {
-        self.performSegue(withIdentifier: "loginToMain", sender: nil)
+        self.launchMainView()
       }
     }
     
+  }
+  
+  func launchMainView() {
+    let viewController = storyboard?.instantiateViewController(withIdentifier: "main") as! UITabBarController
+    present(viewController, animated: true)
+  }
+  
+  @objc func keyboardWillAppear(_ notification: Notification) {
+    let keyboardRect = notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect
+    if keyboardRect != nil {
+      view.frame.origin.y = -keyboardRect!.height
+    }
+  }
+  @objc func keyboardWillDisappear(_ notification: Notification) {
+    view.frame.origin.y = 0
+  }
+  
+}
+
+// MARK: - TextField delegate
+extension LoginViewController: UITextFieldDelegate {
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField.tag == 999 {
+      passwordField.becomeFirstResponder()
+      return true
+    }
+    textField.resignFirstResponder()
+    doLogin(UIButton())
+    return true
   }
   
 }
