@@ -71,8 +71,9 @@ class ParseApiClient: Client {
       "X-Parse-REST-API-Key": Constants.parseApiKey
     ]
     
+    let _where = "{\"uniqueKey\":\"\(uniqueKey)\"}".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     let params = [
-      "where": "{\"uniqueKey\":\"\(uniqueKey)\"}",
+      "where": _where,
       "limit": "100"
     ]
     

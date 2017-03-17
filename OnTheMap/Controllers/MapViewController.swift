@@ -144,7 +144,9 @@ extension MapViewController {
       }
 
       guard let locations = locations else { return }
-      self.data = locations
+      DispatchQueue.main.async {
+        self.data = locations
+      }
     }
   }
   

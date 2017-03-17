@@ -18,7 +18,6 @@ class Client {
     // append the parameters to the URL
     var stringParams = [String]()
     for (index, value) in params {
-      let encodedValue = value.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
       stringParams.append("\(index)=\(value)")
     }
     

@@ -64,6 +64,8 @@ class PostViewController: UIViewController {
   // MARK: - Overrides
   override func viewDidLoad() {
     super.viewDidLoad()
+    locationField.delegate = self
+    mediaUrlField.delegate = self
   }
   
   
@@ -123,6 +125,16 @@ class PostViewController: UIViewController {
   
 }
 
+// MARK: - TextField Delegate
+extension PostViewController: UITextFieldDelegate {
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
+  
+}
+
 
 // MARK: - Public/private functions
 extension PostViewController {
@@ -140,9 +152,9 @@ extension PostViewController {
     if let csi = appDelegate.currentStudentInformation {
       // csi: current student info
       let info = StudentInformation(objectId: csi.objectId,
-                                    uniqueKey: csi.uniqueKey,
-                                    firstName: csi.firstName,
-                                    lastName: csi.lastName,
+                                    uniqueKey: "\(appDelegate.accountKey!)",
+                                    firstName: appDelegate.firstname,
+                                    lastName: appDelegate.lastname,
                                     mapString: locationField.text!,
                                     mediaUrl: mediaUrlField.text!,
                                     latitude: selectedLocation.latitude,

@@ -66,9 +66,10 @@ class LoginViewController: UIViewController {
       
       ParseApiClient.sharedInstance.getStudentLocation(accountKey, { (info, error) in
         guard error == nil, info != nil else {
-          
+          print("ERROR --- HERE ---------------", error)
           return
         }
+        print("INFO --- HERE ---------------", info)
         appDelegate.currentStudentInformation = info
       })
       
