@@ -15,12 +15,6 @@ class MapViewController: UIViewController {
   @IBOutlet weak var map: MKMapView!
   
   // MARK: - Properties
-  var data = [StudentInformation]() {
-    didSet {
-      updateMap()
-    }
-  }
-  
   struct Storyboard {
     static let postViewId = "postLocationView"
     static let loginViewId = "loginView"
@@ -145,7 +139,8 @@ extension MapViewController {
 
       guard let locations = locations else { return }
       DispatchQueue.main.async {
-        self.data = locations
+        StudentInformations.data = locations
+        self.updateMap()
       }
     }
   }
@@ -155,7 +150,7 @@ extension MapViewController {
     
     var annotations = [MKPointAnnotation]()
     
-    for item in data {
+    for item in StudentInformations.data {
       let annotation = MKPointAnnotation()
       annotation.title = item.firstName + " " + item.lastName
       annotation.coordinate = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)

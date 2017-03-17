@@ -11,11 +11,6 @@ import UIKit
 class ListViewController: UITableViewController {
   
   // MARK: - Properties
-  var data = [StudentInformation]() {
-    didSet {
-      tableView.reloadData()
-    }
-  }
   
   struct Storyboard {
     static let locationTableCellId = "locationCell"
@@ -95,7 +90,7 @@ extension ListViewController {
 extension ListViewController {
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return data.count
+    return StudentInformations.data.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,7 +98,8 @@ extension ListViewController {
     
     if let imageView = cell?.imageView, let label = cell?.textLabel {
       imageView.image = #imageLiteral(resourceName: "pin")
-      label.text = data[indexPath.row].firstName + " " + data[indexPath.row].lastName
+      label.text = StudentInformations.data[indexPath.row].firstName + " " +
+        StudentInformations.data[indexPath.row].lastName
     }
     
     return cell!
@@ -115,7 +111,7 @@ extension ListViewController {
 extension ListViewController {
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let info = data[indexPath.row]
+    let info = StudentInformations.data[indexPath.row]
     openUrl(url: info.mediaUrl)
   }
   
@@ -138,7 +134,7 @@ extension ListViewController {
       
       guard let locations = locations else { return }
       DispatchQueue.main.async {
-        self.data = locations
+        StudentInformations.data = locations
       }
     }
   }

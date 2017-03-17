@@ -28,10 +28,8 @@ struct StudentInformation {
     var _latitude: Double?
     var _longitude: Double?
     
-    // I spent several hours, of my precious time, wondering what I was doing
-    // wrong that I couldn't parse some items. It turns out that the stupid API
-    // returns results with different character cases in the keys. For example
-    // it's sometimes 'mediaUrl' and sometimes 'mediaURL'
+    // The API returns results with different character cases in the keys. For example
+    // it's sometimes 'mediaUrl' and sometimes 'mediaURL'. This will fix it
     for (key, value) in object {
       let key = key as! String
       switch key.lowercased() {
