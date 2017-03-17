@@ -63,11 +63,10 @@ class UdacityApiClient: Client {
           completionHandler(accountKey, sessionId, nil)
           return
         }
-        
         completionHandler(nil, nil, Constants.ErrorMessages.unknownError)
       }
       catch {
-        completionHandler(nil, nil, Constants.ErrorMessages.unknownError)
+        completionHandler(nil, nil, error.localizedDescription)
         return
       }
     }
@@ -98,5 +97,35 @@ class UdacityApiClient: Client {
       
       completionHandler(nil)
     }
+  }
+  
+  func getPublicUserData(_ id: String, _ completionHandler: @escaping (StudentInformation?, String?) -> Void) {
+    
+    let url = Endpoints.Base.udacity + Endpoints.UdacityActions.users + "/\(id)"
+    
+    get(url, parameters: [:], headers: nil) { (data, response, error) in
+      guard let data = data else {
+        completionHandler(nil, self.process(responseAndError: response, error: error))
+        return
+      }
+      
+      let range = Range(5 ..< data.count)
+      let subData = data.subdata(in: range)
+      do {
+        let json = try JSONSerialization.jsonObject(with: subData, options: .allowFragments)
+          as! [AnyHashable: Any]
+        
+        let firstname = json["first_name"] as? String
+        let lastname = json["last_name"] as? String
+        
+        let appd = UIApplication.shared.delegate as! AppDelegate
+        appd.firstname = (firstname != nil) ? firstname! : ""
+        appd.lastname = (lastname != nil) ? lastname! : ""
+      }
+      catch {
+        completionHandler(nil, error.localizedDescription)
+      }
+    }
+    
   }
 }

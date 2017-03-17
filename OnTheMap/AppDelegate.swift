@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var accountKey: Int!
   var sessionId: String!
   var currentStudentInformation: StudentInformation!
+  var firstname = ""
+  var lastname = ""
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.

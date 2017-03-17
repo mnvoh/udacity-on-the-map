@@ -36,8 +36,8 @@ class LoginViewController: UIViewController {
   
   @IBAction func doLogin(_ sender: UIButton) {
     
-    self.performSegue(withIdentifier: "loginToMain", sender: nil)
-    return
+//    self.performSegue(withIdentifier: "loginToMain", sender: nil)
+//    return
     
     if emailField.text == "" || passwordField.text == "" {
       present(Utils.alert(title: "Incorrent Credentials", message: "Please enter your username and password"),
@@ -65,7 +65,12 @@ class LoginViewController: UIViewController {
       appDelegate.sessionId = sessionId
       
       ParseApiClient.sharedInstance.getStudentLocation(accountKey, { (info, error) in
-        guard error == nil, info != nil else { return }
+        guard error == nil, info != nil else {
+          UdacityApiClient.sharedInstance.getPublicUserData("\(accountKey)", { (info, error) in
+            
+          })
+          return
+        }
         appDelegate.currentStudentInformation = info
       })
       
